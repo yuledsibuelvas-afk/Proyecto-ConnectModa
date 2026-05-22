@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ConnectModa — Moda que conecta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">Connect<span>Moda</span></a>
+        <ul class="nav-links">
+            <li><a href="#categorias">Categorías</a></li>
+            <li><a href="#marcas">Emprendimientos</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#como-funciona">Cómo funciona</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="#" class="btn-ghost" onclick="openModal('login')">Ingresar</a>
+            <a href="#" class="btn-primary" onclick="openModal('register')">Registrarse</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div>
+            <div class="hero-badge fade-up fade-up-1">Plataforma de moda colombiana</div>
+            <h1 class="fade-up fade-up-2">
+                Conectando <em>emprendedores</em> con el mundo de la moda
+            </h1>
+            <p class="hero-sub fade-up fade-up-3">
+                ConnectModa es el espacio digital donde los pequeños negocios de moda ganan visibilidad y los usuarios descubren piezas únicas, locales y llenas de historia.
+            </p>
+            <div class="hero-actions fade-up fade-up-4">
+                <a href="#marcas" class="btn-accent">Explorar marcas</a>
+                <a href="#" class="btn-ghost" onclick="openModal('register-emp')">Registrar mi negocio</a>
+            </div>
+            <div class="hero-stats fade-up fade-up-5">
+                <div class="stat-item">
+                    <span class="stat-num">240+</span>
+                    <span class="stat-label">Emprendimientos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">1.200+</span>
+                    <span class="stat-label">Productos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">12k+</span>
+                    <span class="stat-label">Usuarios activos</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="hero-card">
+                <div class="card-img bg1">👗</div>
+                <div class="card-info">
+                    <div class="card-brand">Luna Textil</div>
+                    <div class="card-name">Vestido Boho Edición Verano</div>
+                    <div class="card-price">$185.000</div>
+                    <div class="card-tag">Ropa Mujer</div>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="card-img bg2">👜</div>
+                <div class="card-info">
+                    <div class="card-brand">Artesa Bags</div>
+                    <div class="card-name">Bolso Artesanal Trenzado</div>
+                    <div class="card-price">$240.000</div>
+                    <div class="card-tag">Accesorios</div>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="card-img bg3">🧢</div>
+                <div class="card-info">
+                    <div class="card-brand">Style Cap Co</div>
+                    <div class="card-name">Gorra Moderna Premium</div>
+                    <div class="card-price">$65.000</div>
+                    <div class="card-tag">Accesorios</div>
+                </div>
+            </div>
+            <div class="hero-card">
+                <div class="card-img bg4">🕶️</div>
+                <div class="card-info">
+                    <div class="card-brand">Lentes ArtCraft</div>
+                    <div class="card-name">Lentes de Sol Artesanales</div>
+                    <div class="card-price">$120.000</div>
+                    <div class="card-tag">Accesorios</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEARCH -->
+    <div class="search-section">
+        <div class="search-inner">
+            <div class="search-bar">
+                <select id="category-filter">
+                    <option value="">Todas las categorías</option>
+                    <option value="ropa-mujer">Ropa Mujer</option>
+                    <option value="ropa-hombre">Ropa Hombre</option>
+                    <option value="accesorios">Accesorios</option>
+                    <option value="moda-infantil">Moda Infantil</option>
+                </select>
+                <input type="text" placeholder="Buscar marcas, productos, emprendedores…" id="main-search" />
+                <button class="search-btn" onclick="handleSearch()">Buscar →</button>
+            </div>
+            <div class="search-tags">
+                <span class="tag-label">Tendencias:</span>
+                <span class="tag-pill active" onclick="toggleTag(event)">Sostenible</span>
+                <span class="tag-pill" onclick="toggleTag(event)">Artesanal</span>
+                <span class="tag-pill" onclick="toggleTag(event)">Ropa casual</span>
+                <span class="tag-pill" onclick="toggleTag(event)">Vintage</span>
+                <span class="tag-pill" onclick="toggleTag(event)">Tallas grandes</span>
+                <span class="tag-pill" onclick="toggleTag(event)">Ofertas</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CATEGORIES -->
+    <section class="section" id="categorias">
+        <div class="section-header">
+            <span class="section-label">Explorar</span>
+            <h2 class="section-title">Encuentra tu estilo</h2>
+            <p class="section-sub">Navega por nuestras categorías y descubre cientos de opciones de emprendedores locales.</p>
+        </div>
+        <div class="cat-grid">
+            <div class="cat-card c1" onclick="filterCategory('ropa-mujer')">
+                <span class="cat-icon">👗</span>
+                <span class="cat-name">Ropa Mujer</span>
+                <span class="cat-count">384 productos</span>
+            </div>
+            <div class="cat-card c2" onclick="filterCategory('ropa-hombre')">
+                <span class="cat-icon">👔</span>
+                <span class="cat-name">Ropa Hombre</span>
+                <span class="cat-count">210 productos</span>
+            </div>
+            <div class="cat-card c3" onclick="filterCategory('accesorios')">
+                <span class="cat-icon">👜</span>
+                <span class="cat-name">Accesorios</span>
+                <span class="cat-count">293 productos</span>
+            </div>
+            <div class="cat-card c4" onclick="filterCategory('moda-infantil')">
+                <span class="cat-icon">🧸</span>
+                <span class="cat-name">Moda Infantil</span>
+                <span class="cat-count">96 productos</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- BRANDS -->
+    <section class="brands-section" id="marcas">
+        <div class="section-header">
+            <span class="section-label">Emprendimientos destacados</span>
+            <h2 class="section-title">Marcas que inspiran</h2>
+            <p class="section-sub">Conoce a los emprendedores que están transformando la moda local en Colombia.</p>
+        </div>
+        <div class="brands-grid" id="brands-container">
+            <!-- Se cargará dinámicamente -->
+        </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section class="products-section" id="productos">
+        <div class="products-header">
+            <div>
+                <span class="section-label">Catálogo</span>
+                <h2 class="section-title" style="text-align:left;">Productos destacados</h2>
+            </div>
+            <div class="filter-row">
+                <button class="filter-btn active" onclick="setFilter(event, 'todos')">Todos</button>
+                <button class="filter-btn" onclick="setFilter(event, 'nuevos')">Nuevos</button>
+                <button class="filter-btn" onclick="setFilter(event, 'populares')">Populares</button>
+                <button class="filter-btn" onclick="setFilter(event, 'ofertas')">Ofertas</button>
+            </div>
+        </div>
+        <div class="products-grid" id="products-grid">
+            <!-- Se cargará dinámicamente -->
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-section" id="como-funciona">
+        <div class="section-header">
+            <span class="section-label">El proceso</span>
+            <h2 class="section-title">¿Cómo funciona ConnectModa?</h2>
+            <p class="section-sub">En cuatro pasos simples, conectamos emprendedores y compradores.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card">
+                <span class="step-num">01</span>
+                <span class="step-icon">📝</span>
+                <div class="step-title">Regístrate gratis</div>
+                <div class="step-desc">Crea tu cuenta como usuario, emprendedor o administrador. El proceso toma menos de 2 minutos.</div>
+            </div>
+            <div class="step-card">
+                <span class="step-num">02</span>
+                <span class="step-icon">🏪</span>
+                <div class="step-title">Crea tu perfil de marca</div>
+                <div class="step-desc">Los emprendedores completan su perfil, suben su logo, descripción y comienzan a publicar productos.</div>
+            </div>
+            <div class="step-card">
+                <span class="step-num">03</span>
+                <span class="step-icon">🔍</span>
+                <div class="step-title">Explora y descubre</div>
+                <div class="step-desc">Los usuarios buscan por categoría, nombre o tendencia y encuentran piezas únicas de emprendedores locales.</div>
+            </div>
+            <div class="step-card">
+                <span class="step-num">04</span>
+                <span class="step-icon">🤝</span>
+                <div class="step-title">Conecta y crece</div>
+                <div class="step-desc">Favoritos, seguimiento y contacto directo con la marca. Visibilidad real para los negocios de moda.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROLES -->
+    <section class="roles-section" id="roles">
+        <div class="section-header">
+            <span class="section-label">Roles de usuario</span>
+            <h2 class="section-title">Un espacio para cada uno</h2>
+            <p class="section-sub">ConnectModa tiene un rol diseñado especialmente para ti.</p>
+        </div>
+        <div class="roles-grid">
+            <div class="role-card admin">
+                <span class="role-icon">🛡️</span>
+                <div class="role-title">Administrador</div>
+                <div class="role-desc">Gestiona la plataforma, modera contenido y asegura la calidad de los emprendimientos registrados.</div>
+                <ul class="role-perks">
+                    <li><span class="perk-dot"></span>Gestión de usuarios y roles</li>
+                    <li><span class="perk-dot"></span>Moderación de contenido</li>
+                    <li><span class="perk-dot"></span>Estadísticas y reportes</li>
+                    <li><span class="perk-dot"></span>Verificación de marcas</li>
+                </ul>
+            </div>
+            <div class="role-card emprendedor">
+                <span class="role-icon">🧵</span>
+                <div class="role-title">Emprendedor</div>
+                <div class="role-desc">Registra tu negocio, publica tus productos y gana visibilidad ante miles de usuarios interesados en moda.</div>
+                <ul class="role-perks">
+                    <li><span class="perk-dot"></span>Perfil de marca personalizado</li>
+                    <li><span class="perk-dot"></span>Publicación de productos</li>
+                    <li><span class="perk-dot"></span>Análisis de visitas</li>
+                    <li><span class="perk-dot"></span>Gestión de catálogo</li>
+                </ul>
+            </div>
+            <div class="role-card usuario">
+                <span class="role-icon">🛍️</span>
+                <div class="role-title">Usuario</div>
+                <div class="role-desc">Navega, descubre y guarda tus marcas favoritas. Accede a un catálogo de moda local único y auténtico.</div>
+                <ul class="role-perks">
+                    <li><span class="perk-dot" style="background:var(--rose)"></span>Búsqueda avanzada</li>
+                    <li><span class="perk-dot" style="background:var(--rose)"></span>Lista de favoritos</li>
+                    <li><span class="perk-dot" style="background:var(--rose)"></span>Seguir marcas</li>
+                    <li><span class="perk-dot" style="background:var(--rose)"></span>Contacto con emprendedores</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>¿Listo para dar el primer paso en la <em>moda local</em>?</h2>
+            <p>Únete a ConnectModa y sé parte del movimiento que está transformando la industria de la moda en Colombia.</p>
+            <div class="cta-btn-row">
+                <a href="#" class="btn-accent" onclick="openModal('register')">Crear cuenta gratis</a>
+                <a href="#" class="btn-ghost" style="color:#fff;border-color:rgba(255,255,255,0.3)" onclick="openModal('register-emp')">Registrar negocio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <span class="footer-logo">Connect<span>Moda</span></span>
+                <p class="footer-tagline">La plataforma que conecta emprendimientos de moda con usuarios que buscan piezas únicas, locales y llenas de identidad colombiana.</p>
+                <div class="footer-social">
+                    <a class="social-btn" href="#" title="Instagram">📸</a>
+                    <a class="social-btn" href="#" title="Facebook">🌐</a>
+                    <a class="social-btn" href="#" title="TikTok">🎵</a>
+                    <a class="social-btn" href="#" title="WhatsApp">💬</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explorar</h4>
+                <ul>
+                    <li><a href="#categorias">Categorías</a></li>
+                    <li><a href="#marcas">Emprendimientos</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#">Tendencias</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Emprendedores</h4>
+                <ul>
+                    <li><a href="#" onclick="openModal('register-emp')">Registrar negocio</a></li>
+                    <li><a href="#">Cómo publicar</a></li>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Soporte</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Plataforma</h4>
+                <ul>
+                    <li><a href="#">Sobre ConnectModa</a></li>
+                    <li><a href="#">Términos de uso</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2025 ConnectModa. Todos los derechos reservados.</span>
+            <span>Hecho con ❤️ para los emprendedores colombianos</span>
+        </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)">
+        <div class="modal" id="modal">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div class="modal-logo">Connect<span>Moda</span></div>
+            <div class="modal-sub" id="modal-sub">Bienvenido de vuelta</div>
+            <div class="modal-tabs" id="modal-tabs">
+                <button class="modal-tab active" onclick="switchTab('login')">Ingresar</button>
+                <button class="modal-tab" onclick="switchTab('register')">Registrarse</button>
+            </div>
+            <div id="modal-form-area"></div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast"></div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
